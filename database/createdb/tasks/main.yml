@@ -1,0 +1,57 @@
+---
+- name: Update caches respository
+  apt:
+    update_cache: yes
+
+- name: Updating and installing core packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+      packages:
+      - bash 
+      - openssl
+      - libssl-dev 
+      - libssl-doc 
+
+- name: Install PostgreSQL
+  apt:
+    name: "{{ packages }}"
+  vars:
+      packages:
+      - postgresql 
+      - postgresql-contrib
+      - libpq-dev
+      - python-psycopg2 
+
+- name: Ensure the PostgreSQL service is running
+  service: name=postgresql state=started enabled=yes
+# Modify postgresql config file to remote connection
+- name: Edit postgresql.conf file
+  shell: |
+    sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/gi" /etc/postgresql/9.5/main/postgresql.conf
+    systemctl restart postgresql
+# Modify pg_hba config file to allow no ssl connection
+- name: Edit pg_hba.conf file
+  shell: |
+    echo "hostnossl  all  all  0.0.0.0/0  trust" >> /etc/postgresql/9.5/main/pg_hba.conf
+    echo "host  all  all  10.0.2.186/32  trust" >> /etc/postgresql/9.5/main/pg_hba.conf
+    echo "host  all  all  10.0.1.15/32  trust" >> /etc/postgresql/9.5/main/pg_hba.conf
+    systemctl restart postgresql
+
+- name: Ensure database is created
+  become: true
+  become_user: postgres
+  postgresql_db: name={{ DB_NAME }}
+                 encoding='UTF-8'
+                 lc_collate='en_US.UTF-8'
+                 lc_ctype='en_US.UTF-8'
+                 template='template0'
+                 state=present
+
+- name: Ensure user has access to the database
+  become: true
+  become_user: postgres
+  postgresql_user: db={{ DB_NAME }}
+                   name={{ DB_USER }}
+                   priv=ALL 
+                   state=present 

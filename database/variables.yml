@@ -1,0 +1,7 @@
+---
+  NODEJS_VERSION: 10
+  APP_DIR: /home/ubuntu/selene-ah-backend
+  DB_NAME: havenss
+  DB_USER: postgres
+  REPO_URL: https://github.com/andela/selene-ah-backend.git
+  PM2_PATH: $PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu

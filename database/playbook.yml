@@ -1,0 +1,23 @@
+---
+ - hosts: all
+   become: true
+   become_method: sudo
+   remote_user: ubuntu
+   vars_files: 
+    - ./variables.yml
+
+   roles:
+    - createdb
+   
+  
+    
+    
+
+  
+
+  
+       
+
+    
+
+    

@@ -1,0 +1,48 @@
+  - name: delete folder if exit
+    file:
+      path: selene-ah-frontend
+      state: absent
+        
+
+  - name: Clone the application repo
+    git:
+      repo: "{{REPO_URL}}"
+      dest: "{{APP_DIR}}"
+
+  - name: Installing packages
+    shell: | 
+        cd {{APP_DIR}}
+        bash -c 'cat > .env <<EOF
+                DATABASE_URL=postgresql://postgres:@10.0.2.186:5432/postgres
+                DIALECT=postgres
+                DB_USERNAME=postgres
+                DB_TEST=postgres
+                DB_DEV=postgres
+                DB_PRODUCTION=postgres
+                NODE_ENV=production
+                DB_HOST=10.0.2.186
+                SENDGRID_API_KEY=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
+                GOOGLE_CLIENT_ID=133578575772-r71rj8emghjn6etlc34er8ge29l0t03d.apps.googleusercontent.com
+                GOOGLE_CLIENT_SECRET=84e3rrLOI_6rwEZQe7IR_yZ2
+                FACEBOOK_APP_ID=358388604719748
+                FACEBOOK_APP_SECRET=ba72f30bab9c6e98fb8c1d6ec94da315
+                FACEBOOK_APP_CALLBACK=localhost:3000/api/v1/auth/facebook/callback
+                SECRET=ekpang
+                TWITTER_CONSUMER_KEY=ZziIWaKDqVgiJT5UO47F3GLbo
+                TWITTER_CONSUMER_SECRET=k4tLbTiDiM6vr1QeN8IFSR7lsu7O7rdcs9rk2ZA0wdFfTjYvZs
+                TWITTER_CALLBACK_URL=http://localhost:3000/api/v1/auth/twitter/callback
+                GOOGLE_CALLBACK_URL=http://localhost:3000/api/v1/auth/google/callback
+                USER_PROFILE_URL=https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true
+                FACEBOOK_CALLBACK_URL=/api/v1/auth/facebook/callback
+                PUSHER_APP_ID=676812
+                PUSHER_APP_KEY=adc6a5fbcbee028d3bd6
+                PUSHER_APP_SECRET=f49484ffdc88d4f1ddac
+                PUSHER_APP_CLUSTER=eu
+
+          EOF'
+        npm install -ES --unsafe-perm=true
+        
+  - name: Build project
+    shell: |
+        cd {{APP_DIR}}
+        npm run build

@@ -1,0 +1,5 @@
+---
+  NODEJS_VERSION: 10
+  APP_DIR: /home/ubuntu/selene-ah-frontend
+  REPO_URL: https://github.com/andela/selene-ah-frontend.git
+  PM2_PATH: $PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
