@@ -10,6 +10,7 @@
     - setup_nginx
     - setup_node
     - clone_repo
+    - setup_pm2
    
     
     
