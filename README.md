@@ -5,7 +5,7 @@ This project sets up a network and deploy the <a href="https://github.com/andela
 
 ## Infrastructure
 
-<img src="images/infrastructure.png">
+<img src="images/infrastructure_image.png">
 
 When a user first visit  Author's Haven Url, it hits the frontend of the application, the frontend then makes an api call to the backend which in turns makes request to the database server to get the data back to the user . 
 
