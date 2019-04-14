@@ -2,7 +2,7 @@
 
 # ---------------------------------------------------------------------------------------------------------------------
 # DEPLOY AN INSTANCE, THEN TRIGGERS A PROVISIONER
-# This script runs migrations and seed data to the backend instance
+# This script runs migrations and seed data to the database
 # ---------------------------------------------------------------------------------------------------------------------
 
 # to ensure the script terminate when it encounters an error
