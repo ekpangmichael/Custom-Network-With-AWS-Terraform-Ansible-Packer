@@ -1,5 +1,4 @@
 
-Ap
 # Setting up a network with Terraform
 This project sets up a network and deploy the <a href="https://github.com/andela/selene-ah-frontend">Authors Haven</a> application on AWS
 
@@ -29,6 +28,8 @@ Provide your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` Credentials
 clone the repo
 [https://github.com/ekpangmichael/Custom-Network-With-AWS-Terraform-Ansible-Packer](https://github.com/ekpangmichael/Custom-Network-With-AWS-Terraform-Ansible-Packer)
 ```
+
+
 ### Deploying
 
 The project uses packer to build the images, Ansible to provision the images and Terraform to provision the infrastructure and deploy the project
@@ -38,6 +39,9 @@ The project uses packer to build the images, Ansible to provision the images and
 > bash deploy.sh -i
 ```
  to build the Frontend, Backend and Database Images and start provisioning the infrastructure 
+
+
+
 
 
 ### Destory the infrastructure
@@ -55,6 +59,8 @@ Run
 ```
 > bash deploy.sh -h or --help to access the help commands
 ```
+
+
 
 ## Contributing
 
