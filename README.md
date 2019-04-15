@@ -13,9 +13,9 @@ Access to the private subnet is only through the private IP of the **nat-instanc
 
 ### Prerequisites
 
-Make sure you have the following software installs
+Make sure you have the following softwares installs
 
--   [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
+- [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
 - [Packer](https://packer.io/)
 - [Ansible](https://www.ansible.com/)
 
@@ -26,7 +26,7 @@ Provide your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` Credentials
 
 ```
 clone the repo
-[https://github.com/ekpangmichael/Custom-Network-With-AWS-Terraform-Ansible-Packer](https://github.com/ekpangmichael/Custom-Network-With-AWS-Terraform-Ansible-Packer)
+git clone https://github.com/ekpangmichael/Custom-Network-With-AWS-Terraform-Ansible-Packer.git
 ```
 
 
@@ -34,7 +34,7 @@ clone the repo
 
 The project uses packer to build the images, Ansible to provision the images and Terraform to provision the infrastructure and deploy the project
 
-**cd in th directory and run**
+**cd in the directory and run**
 ```
 > bash deploy.sh -i
 ```
